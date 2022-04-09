@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.0"
 intents:
   - request_restaurant:
       use_entities: []
@@ -20,13 +20,13 @@ entities:
 
 slots:
   cuisine:
-    type: text
+    type: any
     influence_conversation: false
     mappings:
     - type: from_entity
       entity: cuisine
   num_people:
-    type: float
+    type: any
     influence_conversation: false
     mappings:
     - type: from_entity
@@ -132,5 +132,5 @@ forms:
       - feedback
 
 session_config:
-  session_expiration_time: 60  # value in minutes
+  session_expiration_time: 2  # value in minutes
   carry_over_slots_to_new_session: true

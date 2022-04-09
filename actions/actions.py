@@ -35,6 +35,14 @@ class ValidateRestaurantForm(FormValidationAction):
         except ValueError:
             return False
 
+    async def extract_cuisine(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> Dict[Text, Any]:
+        text_of_last_user_message = tracker.latest_message.get("text")
+        print(f"extract_cuisine: {text_of_last_user_message}")
+
+        return {"cuisine": text_of_last_user_message}
+
     def validate_cuisine(
         self,
         value: Text,
@@ -52,6 +60,14 @@ class ValidateRestaurantForm(FormValidationAction):
             # validation failed, set this slot to None, meaning the
             # user will be asked for the slot again
             return {"cuisine": None}
+
+    async def extract_num_people(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> Dict[Text, Any]:
+        text_of_last_user_message = tracker.latest_message.get("text")
+        print(f"extract_num_people: {text_of_last_user_message}")
+
+        return {"num_people": text_of_last_user_message}
 
     def validate_num_people(
         self,
